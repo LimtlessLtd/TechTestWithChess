@@ -6,29 +6,29 @@ using TechTestWithChess.Services;
 namespace TechTestWithChess.Tests.ServiceTests
 {
     [TestClass]
-    public class ChessPeiceServiceTests
+    public class ChessPieceServiceTests
     {
         [TestMethod]
-        public void We_Can_Simulate_Pawn_Chess_Peice_Correctly()
+        public void We_Can_Simulate_Pawn_Chess_Piece_Correctly()
         {
-            var sut = new ChessPeiceService();
-            var response = sut.SimulateChessPeice(new PawnChessPeice());
+            var sut = new ChessPieceService();
+            var response = sut.SimulateChessPiece(new PawnChessPiece());
             Assert.AreEqual(0, response.Count);
         }
 
         [TestMethod]
-        public void We_Can_Simulate_King_Chess_Peice_Correctly()
+        public void We_Can_Simulate_King_Chess_Piece_Correctly()
         {
-            var sut = new ChessPeiceService();
-            var response = sut.SimulateChessPeice(new KingChessPeice());
+            var sut = new ChessPieceService();
+            var response = sut.SimulateChessPiece(new KingChessPiece());
             Assert.AreEqual(124908, response.Count);
         }
 
         [TestMethod]
-        public void We_Can_Simulate_Bishop_Chess_Peice_Correctly()
+        public void We_Can_Simulate_Bishop_Chess_Piece_Correctly()
         {
-            var sut = new ChessPeiceService();
-            var response = sut.SimulateChessPeice(new BishopChessPeice());
+            var sut = new ChessPieceService();
+            var response = sut.SimulateChessPiece(new BishopChessPiece());
             Assert.AreEqual(2341, response.Count);
         }
 
@@ -38,7 +38,7 @@ namespace TechTestWithChess.Tests.ServiceTests
         [DataRow("5434567", 5, 4, 3, 4, 5, 6, 7)]
         public void We_Can_Get_Information(string fullNo, int oneth, int twoth, int threeth, int fourth, int fifth, int sixth, int seventh)
         {
-            var sut = new ChessPeiceService();
+            var sut = new ChessPieceService();
             var test = SetupTestSpiderWeb(oneth, twoth, threeth, fourth, fifth, sixth, seventh);
 
             var response = sut.RecursionForGettingPhoneNumber(test, new System.Collections.Generic.List<string>());

@@ -5,7 +5,7 @@ using TechTestWithChess.Services;
 
 namespace TechTestWithChess.Models
 {
-    public class BishopChessPeice : IChessPeice
+    public class BishopChessPiece : IChessPiece
     {
         public MoveUtilities MovingUtils { get; set; } = new MoveUtilities();
         public List<Move> FindValidMoves(int x, int y, string[,] phonePad, int movesCount, Move ParentMove = null)

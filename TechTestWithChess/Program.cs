@@ -6,28 +6,28 @@ namespace TechTestWithChess
 {
     class Program
     {
-        static ChessPeiceKeypadService ChessPeiceKeypadService = new ChessPeiceKeypadService();
+        static ChessPieceKeypadService ChessPieceKeypadService = new ChessPieceKeypadService();
         static void Main(string[] args)
         {
-            string PeiceToSimulate;
+            string PieceToSimulate;
 
             do
             {
-                ChessPeiceKeypadService.GetDisplayInstructions().ForEach(x => Console.WriteLine(x));
-                PeiceToSimulate = Console.ReadLine();
+                ChessPieceKeypadService.GetDisplayInstructions().ForEach(x => Console.WriteLine(x));
+                PieceToSimulate = Console.ReadLine();
 
-                var result = ChessPeiceKeypadService.IsValidInput(PeiceToSimulate);
+                var result = ChessPieceKeypadService.IsValidInput(PieceToSimulate);
 
                 if (result.Item1)
                 {
-                    var response = ChessPeiceKeypadService.SimulateMovementsForPeice(result.Item2);
+                    var response = ChessPieceKeypadService.SimulateMovementsForPiece(result.Item2);
 
                     response.ForEach(x => Console.WriteLine(x));
                 }
-                else if(PeiceToSimulate.ToLower() != "q")
+                else if(PieceToSimulate.ToLower() != "q")
                     Console.WriteLine("Incorrect input, please try again; or enter Q to quit.");
 
-            } while (PeiceToSimulate.ToLower() != "q");
+            } while (PieceToSimulate.ToLower() != "q");
 
             Environment.Exit(0);
         }

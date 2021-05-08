@@ -5,35 +5,35 @@ using TechTestWithChess.Services.Interfaces;
 
 namespace TechTestWithChess.Services
 {
-    public class ChessPeiceKeypadService : IChessPeiceKeypadService
+    public class ChessPieceKeypadService : IChessPieceKeypadService
     {
-        public IChessPeiceService ChessPeiceService { get; set; } = new ChessPeiceService();
-        public List<string> SimulateMovementsForPeice(int PeiceToSim)
+        public IChessPieceService ChessPieceService { get; set; } = new ChessPieceService();
+        public List<string> SimulateMovementsForPiece(int PieceToSim)
         {
             var result = new List<string>();
 
-            switch (PeiceToSim)
+            switch (PieceToSim)
             {
                 case 1:
-                    result = ChessPeiceService.SimulateChessPeice(new PawnChessPeice());
+                    result = ChessPieceService.SimulateChessPiece(new PawnChessPiece());
                     break;
                 case 2:
                     throw new NotImplementedException();
-                    //result = ChessPeiceService.SimulateChessPeice(new Knight());
+                    //result = ChessPieceService.SimulateChessPiece(new Knight());
                     break;
                 case 3:
-                    result = ChessPeiceService.SimulateChessPeice(new BishopChessPeice());
+                    result = ChessPieceService.SimulateChessPiece(new BishopChessPiece());
                     break;
                 case 4:
                     throw new NotImplementedException();
-                    //result = ChessPeiceService.SimulateChessPeice(new Rook());
+                    //result = ChessPieceService.SimulateChessPiece(new Rook());
                     break;
                 case 5:
                     throw new NotImplementedException();
-                    //result = ChessPeiceService.SimulateChessPeice(new Queen());
+                    //result = ChessPieceService.SimulateChessPiece(new Queen());
                     break;
                 case 6:
-                    result = ChessPeiceService.SimulateChessPeice(new KingChessPeice());
+                    result = ChessPieceService.SimulateChessPiece(new KingChessPiece());
                     break;
                 default:
                     break;
@@ -42,28 +42,28 @@ namespace TechTestWithChess.Services
             return result;
         }
 
-        public Tuple<bool, int> IsValidInput(string PeiceToSim)
+        public Tuple<bool, int> IsValidInput(string PieceToSim)
         {
             bool blResult;
-            int intPeiceToSim;
-            blResult = int.TryParse(PeiceToSim, out intPeiceToSim);
+            int intPieceToSim;
+            blResult = int.TryParse(PieceToSim, out intPieceToSim);
 
-            if (blResult && (intPeiceToSim >= 1 && intPeiceToSim <= 6))
+            if (blResult && (intPieceToSim >= 1 && intPieceToSim <= 6))
                 blResult = true;
             else
                 blResult = false;
 
-            return new Tuple<bool, int>(blResult, intPeiceToSim);
+            return new Tuple<bool, int>(blResult, intPieceToSim);
         }
 
         public List<string> GetDisplayInstructions()
         {
             var result = new List<string>();
 
-            result.Add("Welcome to the Chess Peice Phone Dialing simulator");
+            result.Add("Welcome to the Chess Piece Phone Dialing simulator");
             result.Add("-----------------------------------------------------------");
             result.Add("--How it works--");
-            result.Add("Pick a chess peice with a defined set of moves available to it,");
+            result.Add("Pick a chess Piece with a defined set of moves available to it,");
             result.Add("the app will then loop through every starting position on the phonepad,");
             result.Add("and map out all possible moves up to 7 in a  row.");
             result.Add("");
@@ -77,7 +77,7 @@ namespace TechTestWithChess.Services
             result.Add("5 - Queen -- NOT IMPLEMENTED!");
             result.Add("6 - King");
             result.Add("Please enter Q if you wish to quit.");
-            result.Add("Please enter the Peice that you wish to simulate:");
+            result.Add("Please enter the Piece that you wish to simulate:");
 
             return result;
         }
