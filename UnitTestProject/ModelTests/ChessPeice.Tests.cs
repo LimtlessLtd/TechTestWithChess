@@ -6,7 +6,7 @@ using TechTestWithChess.Services;
 namespace TechTestWithChess.Tests.ModelTests
 {
     [TestClass]
-    public class BishopTests
+    public class ChessPeiceTests
     {
         public string[,] PhonePad = new string[4, 3]
                                 {
@@ -17,11 +17,11 @@ namespace TechTestWithChess.Tests.ModelTests
                                 };
 
         [TestMethod]
-        public void We_Can_Simulate_Bishop_Chess_Piece_Correctly()
+        public void We_Can_Simulate_Bishop_Chess_Peice_Correctly()
         {
             var startMove = new Move() { NewX = 0, NewY = 0, OldX = 0, OldY = 0, SubsequentMoves = new System.Collections.Generic.List<Move>(), Value = "1" };
 
-            var sut = new BishopChessPiece();
+            var sut = new BishopChessPeice();
             var result = sut.FindValidMoves(0, 0, PhonePad, 0, startMove);
 
             Assert.AreEqual(3, result.Count);
@@ -31,11 +31,11 @@ namespace TechTestWithChess.Tests.ModelTests
         }
 
         [TestMethod]
-        public void We_Can_Simulate_Pawn_Chess_Piece_Correctly()
+        public void We_Can_Simulate_Pawn_Chess_Peice_Correctly()
         {
             var startMove = new Move() { NewX = 0, NewY = 0, OldX = 0, OldY = 0, SubsequentMoves = new System.Collections.Generic.List<Move>(), Value = "1" };
 
-            var sut = new PawnChessPiece();
+            var sut = new PawnChessPeice();
             var result = sut.FindValidMoves(0, 0, PhonePad, 0, startMove);
 
             Assert.AreEqual(2, result.Count);
@@ -45,11 +45,11 @@ namespace TechTestWithChess.Tests.ModelTests
         }
 
         [TestMethod]
-        public void We_Can_Simulate_King_Chess_Piece_Correctly()
+        public void We_Can_Simulate_King_Chess_Peice_Correctly()
         {
             var startMove = new Move() { NewX = 0, NewY = 0, OldX = 0, OldY = 0, SubsequentMoves = new System.Collections.Generic.List<Move>(), Value = "1" };
 
-            var sut = new KingChessPiece();
+            var sut = new KingChessPeice();
             var result = sut.FindValidMoves(0, 0, PhonePad, 0, startMove);
 
             Assert.AreEqual(3, result.Count);

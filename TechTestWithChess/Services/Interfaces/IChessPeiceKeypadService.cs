@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TechTestWithChess.Services.Interfaces
 {
-    interface IChessPieceKeypadService
+    interface IChessPeiceKeypadService
     {
-        public List<string> SimulateMovementsForPiece(int PieceToSim);
-        public Tuple<bool, int> IsValidInput(string PieceToSim);
+        public List<string> SimulateMovementsForPeice(int PeiceToSim);
+        public Tuple<bool, int> IsValidInput(string PeiceToSim);
     }
 }

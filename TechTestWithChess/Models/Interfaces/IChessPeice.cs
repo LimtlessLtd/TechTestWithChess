@@ -7,7 +7,7 @@ using TechTestWithChess.Models;
 
 namespace TechTestWithChess.Model.Interfaces
 {
-    public interface IChessPiece
+    public interface IChessPeice
     {
         public List<Move> FindValidMoves(int x, int y, string[,] phonePad, int movesCount, Move ParentMove = null);
     }

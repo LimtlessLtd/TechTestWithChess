@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using TechTestWithChess.Model.Interfaces;
+using TechTestWithChess.Services;
 
 namespace TechTestWithChess.Models
 {
-    public class KingChessPiece : IChessPiece
+    public class KingChessPeice : IChessPeice
     {
+        public MoveUtilities MovingUtils { get; set; } = new MoveUtilities();
         public List<Move> FindValidMoves(int x, int y, string[,] phonePad, int movesCount, Move ParentMove = null)
         {
             movesCount += 1;
@@ -19,15 +21,15 @@ namespace TechTestWithChess.Models
 
             var result = new List<Move>();
 
-            var diagonalLeftUpMoveResult = DiagLeftUpMove(x, y, phonePad);
-            var diagonalLeftDownMoveResult = DiagLeftDownMove(x, y, phonePad);
-            var diagonalRightUpMoveResult = DiagRightUpMove(x, y, phonePad);
-            var diagonalRightDownMoveResult = DiagRightDownMove(x, y, phonePad);
+            var diagonalLeftUpMoveResult = MovingUtils.DiagLeftUpMove(x, y, phonePad);
+            var diagonalLeftDownMoveResult = MovingUtils.DiagLeftDownMove(x, y, phonePad);
+            var diagonalRightUpMoveResult = MovingUtils.DiagRightUpMove(x, y, phonePad);
+            var diagonalRightDownMoveResult = MovingUtils.DiagRightDownMove(x, y, phonePad);
 
-            var straightUpMoveResult = StraightUpMove(x, y, phonePad);
-            var straightDownMoveResult = StraightDownMove(x, y, phonePad);
-            var straightLeftMoveResult = StraightLeftMove(x, y, phonePad);
-            var straightRightMoveResult = StraightRightMove(x, y, phonePad);
+            var straightUpMoveResult = MovingUtils.StraightUpMove(x, y, phonePad);
+            var straightDownMoveResult = MovingUtils.StraightDownMove(x, y, phonePad);
+            var straightLeftMoveResult = MovingUtils.StraightLeftMove(x, y, phonePad);
+            var straightRightMoveResult = MovingUtils.StraightRightMove(x, y, phonePad);
 
             result.AddRange(diagonalLeftUpMoveResult);
             result.AddRange(diagonalLeftDownMoveResult);
@@ -46,135 +48,5 @@ namespace TechTestWithChess.Models
 
             return result;
         }
-
-        private List<Move> DiagLeftUpMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y - 1;
-            int newX = x - 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = newY, Value = phonePad[newY, newX] });
-
-            return result;
-        }
-        private List<Move> DiagLeftDownMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y + 1;
-            int newX = x - 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = newY, Value = phonePad[newY, newX] });
-
-            return result;
-        }
-        private List<Move> DiagRightUpMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y - 1;
-            int newX = x + 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = newY, Value = phonePad[newY, newX] });
-
-            return result;
-        }
-        private List<Move> DiagRightDownMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y + 1;
-            int newX = x + 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = newY, Value = phonePad[newY, newX] });
-
-            return result;
-        }
-        private List<Move> StraightDownMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y + 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = x, NewY = newY, Value = phonePad[newY, x] });
-
-            return result;
-        }
-        private List<Move> StraightUpMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newY = y - 1;
-            bool isValid = true;
-
-            if (newY > phonePad.GetLength(0) - 1 || newY < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = x, NewY = newY, Value = phonePad[newY, x] });
-
-            return result;
-        }
-        private List<Move> StraightLeftMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newX = x - 1;
-            bool isValid = true;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = y, Value = phonePad[y, newX] });
-
-            return result;
-        }
-        private List<Move> StraightRightMove(int x, int y, string[,] phonePad)
-        {
-            var result = new List<Move>();
-            int newX = x + 1;
-            bool isValid = true;
-
-            if (newX > phonePad.GetLength(1) - 1 || newX < 0)
-                isValid = false;
-
-            if (isValid)
-                result.Add(new Move() { OldX = x, OldY = y, NewX = newX, NewY = y, Value = phonePad[y, newX] });
-
-            return result;
-        }
-
     }
 }

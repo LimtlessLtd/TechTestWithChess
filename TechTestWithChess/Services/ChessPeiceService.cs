@@ -7,9 +7,9 @@ using TechTestWithChess.Services.Interfaces;
 
 namespace TechTestWithChess.Services
 {
-    public class ChessPieceService : IChessPieceService
+    public class ChessPeiceService : IChessPeiceService
     {
-        public List<string> SimulateChessPiece(IChessPiece chessPiece)
+        public List<string> SimulateChessPeice(IChessPeice chessPeice)
         {
             var result = new List<string>();
 
@@ -37,7 +37,7 @@ namespace TechTestWithChess.Services
                                     Value = phonePad[y, x]
                                 };
 
-                    parent.SubsequentMoves.AddRange(chessPiece.FindValidMoves(x, y, phonePad, 0, parent));
+                    parent.SubsequentMoves.AddRange(chessPeice.FindValidMoves(x, y, phonePad, 0, parent));
 
                     MoveSet.Add(parent);
                 }

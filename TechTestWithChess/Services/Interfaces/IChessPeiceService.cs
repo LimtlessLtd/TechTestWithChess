@@ -7,8 +7,8 @@ using TechTestWithChess.Model.Interfaces;
 
 namespace TechTestWithChess.Services.Interfaces
 {
-    public interface IChessPieceService
+    public interface IChessPeiceService
     {
-        public List<string> SimulateChessPiece(IChessPiece chessPiece);
+        public List<string> SimulateChessPeice(IChessPeice chessPeice);
     }
 }
